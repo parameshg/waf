@@ -1,0 +1,39 @@
+﻿
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><b>Country-based Restrictions</b></h3>
+    </div>
+    <div class="panel-body">
+        <div>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <td class="text-center" width="10px"><b>SN</b></td>
+                        <td><b>Name</b></td>
+                        <td class="text-center" width="10px"><b>Code</b></td>
+                        <td class="text-center" width="100px"><b>Permission</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="i in countries">
+                        <td class="text-center" width="10px">{{$index + 1}}</td>
+                        <td>{{i.Name}}</td>
+                        <td class="text-center" width="10px">{{i.Code}}</td>
+                        <td class="text-center" width="100px">
+                            <input id="toggle-{{i.Code}}" type="checkbox" 
+                                   data-toggle="toggle" 
+                                   data-on="ALLOW" 
+                                   data-off="DENY" 
+                                   data-onstyle="success" 
+                                   data-offstyle="danger" 
+                                   data-size="mini"
+                                   data-ng-init="initToggle(i.Code)" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br />

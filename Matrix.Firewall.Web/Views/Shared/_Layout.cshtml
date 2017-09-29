@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@AssemblyInfo.Description</title>
+    @* styles *@
+    @Styles.Render("~/styles/bootstrap")
+    @Styles.Render("~/styles/toastr")
+    @Styles.Render("~/styles/web")
+
+    @* scripts *@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/toastr")
+    @Scripts.Render("~/bundles/angular")
+
+    @* bootstrap toggle *@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    @* angularjs scripts *@
+    <script src="~/Angular/Home/app.js"></script>
+    <script src="~/Angular/Home/Controllers/HomeController.js"></script>
+    <script src="~/Angular/Home/Controllers/CountryController.js"></script>
+    <script src="~/Angular/Home/Controllers/AddressController.js"></script>
+    <script src="~/Angular/Home/Controllers/DatetimeController.js"></script>
+    <script src="~/Angular/Home/Services/Api.js"></script>
+</head>
+<body data-ng-app="app">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("WAF", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/country">Country</a></li>
+                    <li><a href="#/address">Address</a></li>
+                    <li><a href="#/datetime">DateTime</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a>@AssemblyInfo.Copyright</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="pull-right" data-toggle="modal" data-target="#version"><a>Version @AssemblyInfo.Version</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="api" name="api" value="@ViewBag.Api" />
+    <script>
+        var api = $("#api").val();
+        var ALERT_DELAY = 2000;
+        var LOADING_DELAY = 100;
+    </script>
+</body>
+</html>
